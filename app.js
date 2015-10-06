@@ -1,9 +1,11 @@
 var websocket = require('websocket').server;
 var http = require('http');
+var express = require('express');
 
-server = http.createServer(function(request, response) {
-  response.end();
-});
+app = express();
+app.use(express.static(__dirname + '/public'));
+
+server = http.createServer(app);
 
 var websocketServer = new websocket({
   httpServer: server,

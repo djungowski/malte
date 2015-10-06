@@ -1,5 +1,5 @@
 $(window).load(function() {
-  var socket = new WebSocket('ws://127.0.0.1:8080');
+  var socket = new WebSocket('ws://' + window.location.host);
   $('.eat').click(function() {
     var time = $(this).attr('data-time');
     socket.send(time);
