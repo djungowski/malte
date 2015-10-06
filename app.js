@@ -3,7 +3,7 @@ var http = require('http');
 var express = require('express');
 
 app = express();
-app.use(express.static(__dirname + '/public'));
+app.use('/malte', express.static(__dirname + '/public'));
 
 server = http.createServer(app);
 
