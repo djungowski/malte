@@ -1,0 +1,24 @@
+.eat {
+	float: left;
+	width: calc(50% - 20px);
+	position: relative;
+}
+
+.eat:first-child {
+	margin-right: 10px;
+}
+
+.eat:last-child {
+	margin-left: 10px;
+}
+
+.eat span {
+	display: block;
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	top: calc(50% - 1.25em);
+	color: #fff;
+	font-size: 2.5em;
+	font-weight: bold;
+}

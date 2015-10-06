@@ -1,0 +1,23 @@
+{
+  "name": "malte",
+  "version": "1.0.0",
+  "description": "Malte for your desktop",
+  "main": "app.js",
+  "dependencies": {
+    "websocket": "^1.0.22"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/djungowski/malte.git"
+  },
+  "author": "Dominik Jungowski",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/djungowski/malte/issues"
+  },
+  "homepage": "https://github.com/djungowski/malte#readme"
+}
