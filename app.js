@@ -1,6 +1,7 @@
 var websocket = require('websocket').server;
 var http = require('http');
 var express = require('express');
+var port = process.env.PORT || 8080;
 
 app = express();
 app.use('/', express.static(__dirname + '/public'));
@@ -26,6 +27,6 @@ websocketServer.on('request', function(request) {
   });
 });
 
-server.listen(80, function() {
+server.listen(port, function() {
   console.log('Server up and running');
 });
