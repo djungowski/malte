@@ -5,10 +5,13 @@ $(window).load(function() {
   var nameEntry = $('#name-entry');
   var nameEntryTextfield = nameEntry.find('input[type=text]');
   var host = location.origin.replace(/^http/, 'ws');
-  var connecting = false;
 
   var hideLoading = function() {
     loading.hide();
+  };
+
+  var showLoading = function() {
+    loading.show();
   };
 
   var hideOverlay = function() {
@@ -24,21 +27,24 @@ $(window).load(function() {
     nameEntryTextfield.focus();
   };
 
+  var hideNameTextfield = function() {
+    nameEntry.hide();
+  };
+
   var connected = function() {
     if (localStorage.name != undefined) {
+      socket.onclose = reconnect;
+      socket.onmessage = playMessage;
+
       hideOverlay();
     } else {
       hideLoading();
       showNameTextfield();
     }
-    connecting = false;
   };
 
   var reconnect = function() {
-    if (connecting) {
-      return;
-    }
-    connecting = false;
+    socket.close();
     showOverlay();
     // Only try to reconnect every second
     window.setTimeout(function() {
@@ -55,12 +61,9 @@ $(window).load(function() {
   };
 
   var connect = function () {
-    connecting = true;
     socket = new WebSocket(host);
     socket.onopen = connected;
-    socket.onclose = reconnect;
     socket.onerror = reconnect;
-    socket.onmessage = playMessage;
   };
 
 
@@ -74,5 +77,7 @@ $(window).load(function() {
     event.preventDefault();
     localStorage.name = nameEntryTextfield.val();
     connected();
+    hideNameTextfield();
+    showLoading();
   });
 });
