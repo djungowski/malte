@@ -1,5 +1,6 @@
 $(window).load(function() {
-  var socket = new WebSocket('ws://' + window.location.host);
+  var host = location.origin.replace(/^http/, 'ws');
+  var socket = new WebSocket(host);
   $('.eat').click(function() {
     var time = $(this).attr('data-time');
     socket.send(time);
