@@ -3,7 +3,7 @@ var http = require('http');
 var express = require('express');
 
 app = express();
-app.use('/malte', express.static(__dirname + '/public'));
+app.use('/', express.static(__dirname + '/public'));
 
 server = http.createServer(app);
 
@@ -26,6 +26,6 @@ websocketServer.on('request', function(request) {
   });
 });
 
-server.listen(8080, function() {
+server.listen(80, function() {
   console.log('Server up and running');
 });
