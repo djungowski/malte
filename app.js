@@ -22,8 +22,7 @@ websocketServer.on('request', function(request) {
   });
 
   connection.on('message', function(data) {
-    var time = data.utf8Data;
-    websocketServer.broadcastUTF(time);
+    websocketServer.broadcastUTF(data.utf8Data);
   });
 });
 
