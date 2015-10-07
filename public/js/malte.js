@@ -1,8 +1,15 @@
 $(window).load(function() {
   var socket;
   var overlay = $('#overlay');
+  var loading = $('#loading');
+  var nameEntry = $('#name-entry');
+  var nameEntryTextfield = nameEntry.find('input[type=text]');
   var host = location.origin.replace(/^http/, 'ws');
   var connecting = false;
+
+  var hideLoading = function() {
+    loading.hide();
+  };
 
   var hideOverlay = function() {
     overlay.hide();
@@ -12,10 +19,20 @@ $(window).load(function() {
     overlay.show();
   };
 
+  var showNameTextfield = function() {
+    nameEntry.show();
+    nameEntryTextfield.focus();
+  };
+
   var connected = function() {
-    hideOverlay();
+    if (localStorage.name != undefined) {
+      hideOverlay();
+    } else {
+      hideLoading();
+      showNameTextfield();
+    }
     connecting = false;
-  }
+  };
 
   var reconnect = function() {
     if (connecting) {
@@ -53,4 +70,9 @@ $(window).load(function() {
     socket.send(time);
   });
 
+  nameEntry.on('submit', function(event) {
+    event.preventDefault();
+    localStorage.name = nameEntryTextfield.val();
+    connected();
+  });
 });

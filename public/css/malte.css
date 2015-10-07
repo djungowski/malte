@@ -19,6 +19,16 @@
 	top: 3px;
 }
 
+#name-entry {
+	display: none;
+	margin: 0 auto;
+}
+
+#name-entry input[type=text] {
+	width: 20em;
+	max-width: 100%;
+}
+
 .eat {
 	float: left;
 	width: calc(50% - 20px);
