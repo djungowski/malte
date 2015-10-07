@@ -49,7 +49,7 @@ $(window).load(function() {
     // Only try to reconnect every second
     window.setTimeout(function() {
       connect();
-    }, 1000);
+    }, 10000);
   };
 
   var playMessage = function(message) {
