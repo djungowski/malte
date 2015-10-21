@@ -18,41 +18,42 @@
             onnecting
         </div>
     </div>
-    <div ng-controller="HungerController">
-        <div id="rollcall">
-            <div class="input-container" id="name" ng-controller="NameController">
-                <span>Dein Name:</span>
-                <input type="text" ng-model="name" value="">
+    <div ng-controller="HungerController" id="content">
+        <div class="buttons">
+            <div id="rollcall">
+                <div class="input-container" id="name" ng-controller="NameController">
+                    <span>Dein Name:</span>
+                    <input type="text" ng-model="name" value="">
+                </div>
+                <div class="input-container" id="time">
+                    <span>Uhrzeit:</span>
+                    <input type="time" ng-model="time" value="">
+                </div>
+                <div id="attendee-container">
+                    <p class="headline">Mitesser:</p>
+                    <p id="attendee-list">
+                        <span ng-repeat="name in attendees" class="attendee-name">{{ name }}</span>
+                    </p>
+                </div>
             </div>
-            <div class="input-container" id="time">
-                <span>Uhrzeit:</span>
-                <input type="time" ng-model="time" value="">
-            </div>
-            <p>Mitesser:</p>
-            <p id="attendee-list">
-                <span ng-repeat="name in attendees" class="attendee-name">{{ name }}</span>
+
+            <p id="eat-now" class="eat" ng-click="sendFoodRequest('now')">
+                <span>Jetzt essen?</span>
+            </p>
+
+            <p id="eat-10min" class="eat" ng-click="sendFoodRequest('10min')">
+                <span>In 10 Minuten essen?</span>
+            </p>
+
+            <p id="eat-plus1" class="eat" ng-click="sendFoodRequest('plus1')">
+                <span>+1</span>
             </p>
         </div>
-        <div id="hunger-control">
-            <div class="buttons">
-                <p id="eat-now" class="eat" ng-click="sendFoodRequest('now')">
-                    <span>Jetzt essen?</span>
-                </p>
 
-                <p id="eat-10min" class="eat" ng-click="sendFoodRequest('10min')">
-                    <span>In 10 Minuten essen?</span>
-                </p>
-
-                <p id="eat-plus1" class="eat" ng-click="sendFoodRequest('plus1')">
-                    <span>+1</span>
-                </p>
-            </div>
-
-            <div id="audio">
-                <audio id="audio-eat-now" src="audio/eat-now.m4a" preload="auto"></audio>
-                <audio id="audio-eat-10min" src="audio/eat-10min.m4a" preload="auto"></audio>
-                <audio id="audio-eat-plus1" src="audio/eat-plus1.m4a" preload="auto"></audio>
-            </div>
+        <div id="audio">
+            <audio id="audio-eat-now" src="audio/eat-now.m4a" preload="auto"></audio>
+            <audio id="audio-eat-10min" src="audio/eat-10min.m4a" preload="auto"></audio>
+            <audio id="audio-eat-plus1" src="audio/eat-plus1.m4a" preload="auto"></audio>
         </div>
     </div>
 </body>

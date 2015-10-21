@@ -8,6 +8,12 @@ body {
 	background-repeat: repeat;
 }
 
+#content {
+	overflow: hidden;
+	max-width: 744px;
+	margin: 0 auto;
+}
+
 #overlay {
 	position: fixed;
 	top: 0;
@@ -48,11 +54,29 @@ body {
 	color: #AA0000;
 }
 
+#rollcall {
+	float: left;
+	margin-right: 0.5em;
+	padding: 0.5em;
+	background-color: rgba(224, 224, 224, 0.8);
+
+	position: relative;
+	cursor: pointer;
+	max-width: calc(600px - 1em);
+	width: calc(364px - 1em);
+	margin-top: 0;
+	margin-left: 0 !important;
+	height: calc(300px - 1em);
+	overflow: hidden;
+	border-radius: 10px;
+	box-shadow: #050933 2px 2px;
+}
+
 .eat {
 	position: relative;
 	cursor: pointer;
 	max-width: 600px;
-	width: calc(33% - 0.5em);
+	width: 364px;
 	float: left;
 	margin-top: 0;
 	margin-left: 0 !important;
@@ -105,16 +129,6 @@ body {
 	float: right;
 }
 
-#rollcall {
-	float: left;
-	width: calc(25% - 2px - 1.5em);
-	margin-right: 0.5em;
-	border: 1px solid #e0e0e0;
-	padding: 0.5em;
-	background-color: rgba(224, 224, 224, 0.8);
-	border-radius: 10px;
-}
-
 .attendee-name {
 	display: block;
 }
@@ -136,6 +150,11 @@ body {
 
 .input-container input {
 	float: right;
+}
+
+#attendee-container .headline {
+	font-weight: bold;
+	text-decoration: underline;
 }
 
 @media only screen and (max-width: 736px) {
