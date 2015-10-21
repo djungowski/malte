@@ -6,6 +6,7 @@
   "dependencies": {
     "angular": "^1.4.7",
     "express": "^4.13.3",
+    "lodash": "^3.10.1",
     "websocket": "^1.0.22"
   },
   "devDependencies": {},

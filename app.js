@@ -1,7 +1,10 @@
 var websocket = require('websocket').server;
 var http = require('http');
 var express = require('express');
+var _ = require('lodash');
+
 var port = process.env.PORT || 8080;
+var attendees = [];
 
 app = express();
 app.use('/', express.static(__dirname + '/public'));
@@ -22,6 +25,9 @@ websocketServer.on('request', function(request) {
   });
 
   connection.on('message', function(data) {
+	var message = JSON.parse(data.utf8Data);
+	attendees.push(message.name);
+	attendees = _.uniq(attendees);
     websocketServer.broadcastUTF(data.utf8Data);
   });
 });
