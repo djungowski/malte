@@ -23,10 +23,9 @@
             <div id="name" ng-controller="NameController">
                 Dein Name: <input type="text" ng-model="name" value="" />
             </div>
-            <!--<div id="time" ng-controller="TimeController">-->
-
-            <!--</div>-->
-            <p>Uhrzeit: hh:mm</p>
+            <div id="time">
+                <p>Uhrzeit: <input type="time" ng-model="time" value=""></p>
+            </div>
             <p>Mitesser:</p>
             <p id="attendee-list">
                 <span ng-repeat="name in attendees" class="attendee-name">{{ name }}</span>

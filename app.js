@@ -31,6 +31,7 @@ websocketServer.on('request', function (request) {
 
 		var broadcastData = {
 			name: message.name,
+			time: message.time,
 			audio: message.audio,
 			attendees: attendees
 		};
