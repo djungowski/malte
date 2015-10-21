@@ -18,26 +18,33 @@
             onnecting
         </div>
     </div>
-    <div id="name" ng-controller="NameController">
-        Dein Name: <input type="text" ng-model="name" value="" />
+    <div id="rollcall">
+        <p>Uhrzeit: hh:mm</p>
+        <p>Mitesser:</p>
+        <p id="attendee-list"></p>
     </div>
-    <div ng-controller="HungerController">
-        <div id="is-hungry">
-            <span id="is-hungry-name">Keiner</span> hat Hunger!
+    <div>
+        <div id="name" ng-controller="NameController">
+            Dein Name: <input type="text" ng-model="name" value="" />
         </div>
-        <div class="buttons">
-            <p id="eat-now" class="eat" data-time="now">
-                <span>Jetzt essen?</span>
-            </p>
+        <div id="hunger-control" ng-controller="HungerController">
+            <div id="is-hungry">
+                <span id="is-hungry-name">Keiner</span> hat Hunger!
+            </div>
+            <div class="buttons">
+                <p id="eat-now" class="eat" data-time="now">
+                    <span>Jetzt essen?</span>
+                </p>
 
-            <p id="eat-10min" class="eat" data-time="10min">
-                <span>In 10 Minuten essen?</span>
-            </p>
-        </div>
+                <p id="eat-10min" class="eat" data-time="10min">
+                    <span>In 10 Minuten essen?</span>
+                </p>
+            </div>
 
-        <div id="audio">
-            <audio id="audio-eat-now" src="audio/eat-now.m4a" preload="auto"></audio>
-            <audio id="audio-eat-10min" src="audio/eat-10min.m4a" preload="auto"></audio>
+            <div id="audio">
+                <audio id="audio-eat-now" src="audio/eat-now.m4a" preload="auto"></audio>
+                <audio id="audio-eat-10min" src="audio/eat-10min.m4a" preload="auto"></audio>
+            </div>
         </div>
     </div>
 </body>
