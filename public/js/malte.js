@@ -2,19 +2,9 @@ $(window).load(function() {
   var socket;
   var overlay = $('#overlay');
   var loading = $('#loading');
-  var nameEntry = $('#name-entry');
   var isHungry = $('#is-hungry');
   var isHungryName = $('#is-hungry-name');
-  var nameEntryTextfield = nameEntry.find('input[type=text]');
   var host = location.origin.replace(/^http/, 'ws');
-
-  var hideLoading = function() {
-    loading.hide();
-  };
-
-  var showLoading = function() {
-    loading.show();
-  };
 
   var hideOverlay = function() {
     overlay.hide();
@@ -24,30 +14,16 @@ $(window).load(function() {
     overlay.show();
   };
 
-  var showNameTextfield = function() {
-    nameEntry.show();
-    nameEntryTextfield.focus();
-  };
-
-  var hideNameTextfield = function() {
-    nameEntry.hide();
-  };
-
   var personIsHungry = function (name) {
     isHungry.show();
     isHungryName.text(name);
   };
 
   var connected = function() {
-    if (localStorage.name != undefined) {
-      socket.onclose = reconnect;
-      socket.onmessage = receiveAndPlayMessage;
+	  socket.onclose = reconnect;
+	  socket.onmessage = receiveAndPlayMessage;
 
-      hideOverlay();
-    } else {
-      hideLoading();
-      showNameTextfield();
-    }
+	  hideOverlay();
   };
 
   var reconnect = function() {
@@ -85,13 +61,5 @@ $(window).load(function() {
       name: localStorage.name
     };
     socket.send(JSON.stringify(transferData));
-  });
-
-  nameEntry.on('submit', function(event) {
-    event.preventDefault();
-    localStorage.name = nameEntryTextfield.val();
-    connected();
-    hideNameTextfield();
-    showLoading();
   });
 });
