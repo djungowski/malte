@@ -26,7 +26,7 @@ websocketServer.on('request', function (request) {
 
 	connection.on('message', function (data) {
 		var message = JSON.parse(data.utf8Data);
-		if (message.time !== null) {
+		if (message.audio !== null) {
 			attendees.push(message.name);
 			attendees = _.uniq(attendees);
 		}
