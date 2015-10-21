@@ -1,5 +1,6 @@
-body {
+body, input {
 	font-family: Georgia, sans-serif;
+	font-size: 16px;
 }
 
 #overlay {

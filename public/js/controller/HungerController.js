@@ -1,6 +1,12 @@
 VirtualMalte.HungerController = function ($scope, $http) {
 	$scope.attendees = [];
-	$scope.time = null;
+
+	var noon = new Date();
+	noon.setHours(12);
+	noon.setMinutes(0);
+	noon.setSeconds(0);
+	noon.setMilliseconds(0);
+	$scope.time = noon;
 
 	var socket;
 	var overlay = $('#overlay');
