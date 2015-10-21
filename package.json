@@ -4,6 +4,7 @@
   "description": "Malte for your desktop",
   "main": "app.js",
   "dependencies": {
+    "angular": "^1.4.7",
     "express": "^4.13.3",
     "websocket": "^1.0.22"
   },

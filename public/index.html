@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="virtualMalte">
 <head>
     <title>Malte for your desktop</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
     <link rel="stylesheet" type="text/css" href="css/malte.css">
     <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="js/angular/angular.min.js"></script>
+    <script type="text/javascript" src="js/init.js"></script>
+    <script type="text/javascript" src="js/controller/NameController.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+
     <script type="text/javascript" src="js/malte.js"></script>
 </head>
 <body>
@@ -17,6 +22,9 @@
             <input type="text" placeholder="Gib hier deinen Namen ein">
             <input type="submit" value="Los">
         </form>
+    </div>
+    <div id="name" ng-controller="NameController">
+        Dein Name: <input type="text" ng-model="name" value="" />
     </div>
     <div id="is-hungry">
         <span id="is-hungry-name">Keiner</span> hat Hunger!
