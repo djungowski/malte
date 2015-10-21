@@ -17,7 +17,7 @@ body {
 #content {
 	overflow: hidden;
 	max-width: 47em;
-	margin: 0 auto;
+	margin: 1em auto 0 auto;
 }
 
 #overlay {
@@ -141,7 +141,7 @@ body {
 #attendee-list {
 	overflow-y: scroll;
 	overflow-x: hidden;
-	max-height: 189px;
+	height: 189px;
 	margin-top: 0;
 }
 
@@ -171,6 +171,10 @@ body {
 }
 
 @media only screen and (max-width: 736px) {
+	#content {
+		margin: 0 auto;
+	}
+
 	#hunger-control {
 		float: none;
 		width: 100%;
