@@ -56,6 +56,10 @@ body {
 	border: 1px solid #e0e0e0;
 }
 
+.eat:active {
+	opacity: 0.5;
+}
+
 #eat-now {
 	background-image: url(../img/eat-now.JPG);
 	background-position: 79% 26%;
