@@ -20,7 +20,7 @@
     </div>
     <div ng-controller="HungerController" id="content">
         <div class="buttons">
-            <div id="rollcall">
+            <div id="rollcall" class="button">
                 <div class="input-container" id="name" ng-controller="NameController">
                     <span>Dein Name:</span>
                     <input type="text" ng-model="name" value="">
@@ -37,15 +37,15 @@
                 </div>
             </div>
 
-            <p id="eat-now" class="eat" ng-click="sendFoodRequest('now')">
+            <p id="eat-now" class="eat button" ng-click="sendFoodRequest('now')">
                 <span>Jetzt essen?</span>
             </p>
 
-            <p id="eat-10min" class="eat" ng-click="sendFoodRequest('10min')">
+            <p id="eat-10min" class="eat button" ng-click="sendFoodRequest('10min')">
                 <span>In 10 Minuten essen?</span>
             </p>
 
-            <p id="eat-plus1" class="eat" ng-click="sendFoodRequest('plus1')">
+            <p id="eat-plus1" class="eat button" ng-click="sendFoodRequest('plus1')">
                 <span>+1</span>
             </p>
         </div>

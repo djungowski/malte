@@ -10,7 +10,7 @@ body {
 
 #content {
 	overflow: hidden;
-	max-width: 744px;
+	max-width: 47em;
 	margin: 0 auto;
 }
 
@@ -56,12 +56,11 @@ body {
 
 #rollcall {
 	float: left;
-	margin-right: 0.5em;
+	margin-right: 1em;
 	padding: 0.5em;
 	background-color: rgba(224, 224, 224, 0.8);
 
 	position: relative;
-	cursor: pointer;
 	max-width: calc(600px - 1em);
 	width: calc(364px - 1em);
 	margin-top: 0;
@@ -80,7 +79,7 @@ body {
 	float: left;
 	margin-top: 0;
 	margin-left: 0 !important;
-	margin-right: 0.5em;
+	margin-right: 0;
 	height: 300px;
 	overflow: hidden;
 	background-repeat: no-repeat;
@@ -107,8 +106,8 @@ body {
 	background-position: 35% 26%;
 }
 
-.eat:last-child {
-	margin-right: 0;
+.buttons .button:nth-child(odd) {
+	margin-right: 1em;
 }
 
 .eat span {
@@ -133,6 +132,19 @@ body {
 	display: block;
 }
 
+#attendee-list {
+	overflow-y: scroll;
+	overflow-x: hidden;
+	max-height: 189px;
+	margin-top: 0;
+}
+
+#attendee-container .headline {
+	font-weight: bold;
+	text-decoration: underline;
+	margin-bottom: 0;
+}
+
 .input-container {
 	overflow: hidden;
 }
@@ -150,11 +162,6 @@ body {
 
 .input-container input {
 	float: right;
-}
-
-#attendee-container .headline {
-	font-weight: bold;
-	text-decoration: underline;
 }
 
 @media only screen and (max-width: 736px) {
