@@ -3,8 +3,6 @@ VirtualMalte.HungerController = function ($scope, $http) {
 
 	var socket;
 	var overlay = $('#overlay');
-	var isHungry = $('#is-hungry');
-	var isHungryName = $('#is-hungry-name');
 	var host = location.origin.replace(/^http/, 'ws');
 
 	var hideOverlay = function() {
@@ -15,11 +13,6 @@ VirtualMalte.HungerController = function ($scope, $http) {
 		overlay.show();
 	};
 
-	var personIsHungry = function (name) {
-		isHungry.show();
-		isHungryName.text(name);
-	};
-
 	var connected = function() {
 		socket.onclose = reconnect;
 		socket.onmessage = receiveAndPlayMessage;
@@ -28,7 +21,6 @@ VirtualMalte.HungerController = function ($scope, $http) {
 	};
 
 	var reconnect = function() {
-		isHungry.hide();
 		socket.close();
 		showOverlay();
 		// Only try to reconnect every second
@@ -44,7 +36,6 @@ VirtualMalte.HungerController = function ($scope, $http) {
 		soundElement.pause();
 		soundElement.currentTime = 0;
 		soundElement.play();
-		personIsHungry(transferData.name);
 		$scope.attendees = transferData.attendees;
 		$scope.$apply();
 	};
