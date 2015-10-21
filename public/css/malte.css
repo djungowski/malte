@@ -101,11 +101,33 @@ body, input {
 
 #rollcall {
 	float: left;
-	width: 25%;
+	width: calc(25% - 2px - 1.5em);
+	margin-right: 0.5em;
+	border: 1px solid #e0e0e0;
+	padding: 0.5em;
 }
 
 .attendee-name {
 	display: block;
+}
+
+.input-container {
+	overflow: hidden;
+}
+
+.input-container span, .input-container input {
+	width: calc(50% - 2px);
+	margin: 0 0 0.5em 0;
+	padding: 0;
+}
+
+.input-container span {
+	display: block;
+	float: left;
+}
+
+.input-container input {
+	float: right;
 }
 
 @media only screen and (max-width: 736px) {

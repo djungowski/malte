@@ -20,11 +20,13 @@
     </div>
     <div ng-controller="HungerController">
         <div id="rollcall">
-            <div id="name" ng-controller="NameController">
-                Dein Name: <input type="text" ng-model="name" value="" />
+            <div class="input-container" id="name" ng-controller="NameController">
+                <span>Dein Name:</span>
+                <input type="text" ng-model="name" value="">
             </div>
-            <div id="time">
-                <p>Uhrzeit: <input type="time" ng-model="time" value=""></p>
+            <div class="input-container" id="time">
+                <span>Uhrzeit:</span>
+                <input type="time" ng-model="time" value="">
             </div>
             <p>Mitesser:</p>
             <p id="attendee-list">
