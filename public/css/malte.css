@@ -46,8 +46,9 @@ body {
 	position: relative;
 	cursor: pointer;
 	max-width: 600px;
-	width: 25%;
+	width: calc(33% - 0.5em);
 	float: left;
+	margin-top: 0;
 	margin-left: 0 !important;
 	margin-right: 0.5em;
 	height: 300px;
@@ -93,11 +94,13 @@ body {
 }
 
 #hunger-control {
-
+	width: 75%;
+	float: right;
 }
 
 #rollcall {
-	float: right;
+	float: left;
+	width: 25%;
 }
 
 .attendee-name {
@@ -105,6 +108,11 @@ body {
 }
 
 @media only screen and (max-width: 736px) {
+	#hunger-control, #rollcall {
+		float: none;
+		width: 100%;
+	}
+
 	.eat {
 		width: 100%;
 		float: none;
