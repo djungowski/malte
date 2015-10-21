@@ -56,8 +56,8 @@ VirtualMalte.HungerController = function ($scope, $http) {
 
 
 	connect();
-	$('.eat').click(function() {
-		var audio = $(this).attr('data-time');
+
+	$scope.sendFoodRequest = function(audio) {
 		var time = $scope.time;
 		var transferData = {
 			audio: audio,
@@ -65,5 +65,5 @@ VirtualMalte.HungerController = function ($scope, $http) {
 			name: localStorage.name
 		};
 		socket.send(JSON.stringify(transferData));
-	});
+	};
 };

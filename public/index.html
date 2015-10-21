@@ -33,15 +33,15 @@
         </div>
         <div id="hunger-control">
             <div class="buttons">
-                <p id="eat-now" class="eat" data-time="now">
+                <p id="eat-now" class="eat" ng-click="sendFoodRequest('now')">
                     <span>Jetzt essen?</span>
                 </p>
 
-                <p id="eat-10min" class="eat" data-time="10min">
+                <p id="eat-10min" class="eat" ng-click="sendFoodRequest('10min')">
                     <span>In 10 Minuten essen?</span>
                 </p>
 
-                <p id="eat-plus1" class="eat" data-time="plus1">
+                <p id="eat-plus1" class="eat" ng-click="sendFoodRequest('plus1')">
                     <span>+1</span>
                 </p>
             </div>
