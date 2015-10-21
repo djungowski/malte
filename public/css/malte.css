@@ -46,30 +46,33 @@ body {
 	position: relative;
 	cursor: pointer;
 	max-width: 600px;
-	width: 100%;
-	float: none;
+	width: 25%;
+	float: left;
 	margin-left: 0 !important;
-	margin-right: 0 !important;
+	margin-right: 0.5em;
 	height: 300px;
 	overflow: hidden;
-	background-position: 50% 26%;
 	background-repeat: no-repeat;
+	border: 1px solid #e0e0e0;
 }
 
 #eat-now {
 	background-image: url(../img/eat-now.JPG);
+	background-position: 79% 26%;
 }
 
 #eat-10min {
 	background-image: url(../img/eat-10min.JPG);
+	background-position: 79% 35%;
 }
 
-.eat:first-child {
-	margin-right: 10px;
+#eat-plus1 {
+	background-image: url(../img/eat-plus1.jpg);
+	background-position: 35% 26%;
 }
 
 .eat:last-child {
-	margin-left: 10px;
+	margin-right: 0;
 }
 
 .eat span {
@@ -97,8 +100,11 @@ body {
 	display: block;
 }
 
-@media only screen and (max-width: 1300px) {
+@media only screen and (max-width: 736px) {
 	.eat {
-
+		width: 100%;
+		float: none;
+		background-position: 50% 26% !important;
+		margin-right: 0 !important;
 	}
 }
