@@ -5,6 +5,8 @@ body, input {
 
 input {
 	-webkit-appearance: none;
+	border: none;
+	height: 25px;
 }
 
 body {
@@ -176,14 +178,19 @@ body {
 
 	#rollcall {
 		float: none;
-		width: calc(100% - 2px - 1em)
+		width: calc(100% - 2px - 1em);
 	}
 
 	.eat {
 		width: 100%;
 		float: none;
-		background-position: 50% 26% !important;
 		margin-right: 0 !important;
 		margin-top: 1em;
+	}
+}
+
+@media only screen and (min-width: 321px) {
+	.eat {
+		background-position: 50% 26%;
 	}
 }
