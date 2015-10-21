@@ -12,26 +12,32 @@ app.use('/', express.static(__dirname + '/public'));
 server = http.createServer(app);
 
 var websocketServer = new websocket({
-  httpServer: server,
-  autoAcceptConnections: false
+	httpServer: server,
+	autoAcceptConnections: false
 });
 
-websocketServer.on('request', function(request) {
-  console.log('New connection opened');
-  var connection = request.accept();
+websocketServer.on('request', function (request) {
+	console.log('New connection opened');
+	var connection = request.accept();
 
-  connection.on('close', function () {
-    console.log('Connection closed');
-  });
+	connection.on('close', function () {
+		console.log('Connection closed');
+	});
 
-  connection.on('message', function(data) {
-	var message = JSON.parse(data.utf8Data);
-	attendees.push(message.name);
-	attendees = _.uniq(attendees);
-    websocketServer.broadcastUTF(data.utf8Data);
-  });
+	connection.on('message', function (data) {
+		var message = JSON.parse(data.utf8Data);
+		attendees.push(message.name);
+		attendees = _.uniq(attendees);
+
+		var broadcastData = {
+			name: message.name,
+			audio: message.audio,
+			attendees: attendees
+		};
+		websocketServer.broadcastUTF(JSON.stringify(broadcastData));
+	});
 });
 
-server.listen(port, function() {
-  console.log('Server up and running');
+server.listen(port, function () {
+	console.log('Server up and running');
 });
