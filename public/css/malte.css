@@ -3,6 +3,10 @@ body, input {
 	font-size: 16px;
 }
 
+input {
+	-webkit-appearance: none;
+}
+
 body {
 	background: url(../img/background.jpg);
 	background-repeat: repeat;
