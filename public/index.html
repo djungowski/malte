@@ -7,10 +7,9 @@
     <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="js/angular/angular.min.js"></script>
     <script type="text/javascript" src="js/init.js"></script>
+    <script type="text/javascript" src="js/controller/HungerController.js"></script>
     <script type="text/javascript" src="js/controller/NameController.js"></script>
     <script type="text/javascript" src="js/bootstrap.js"></script>
-
-    <script type="text/javascript" src="js/malte.js"></script>
 </head>
 <body>
     <div id="overlay">
@@ -22,22 +21,24 @@
     <div id="name" ng-controller="NameController">
         Dein Name: <input type="text" ng-model="name" value="" />
     </div>
-    <div id="is-hungry">
-        <span id="is-hungry-name">Keiner</span> hat Hunger!
-    </div>
-    <div class="buttons">
-        <p id="eat-now" class="eat" data-time="now">
-            <span>Jetzt essen?</span>
-        </p>
+    <div ng-controller="HungerController">
+        <div id="is-hungry">
+            <span id="is-hungry-name">Keiner</span> hat Hunger!
+        </div>
+        <div class="buttons">
+            <p id="eat-now" class="eat" data-time="now">
+                <span>Jetzt essen?</span>
+            </p>
 
-        <p id="eat-10min" class="eat" data-time="10min">
-            <span>In 10 Minuten essen?</span>
-        </p>
-    </div>
+            <p id="eat-10min" class="eat" data-time="10min">
+                <span>In 10 Minuten essen?</span>
+            </p>
+        </div>
 
-    <div id="audio">
-        <audio id="audio-eat-now" src="audio/eat-now.m4a" preload="auto"></audio>
-        <audio id="audio-eat-10min" src="audio/eat-10min.m4a" preload="auto"></audio>
+        <div id="audio">
+            <audio id="audio-eat-now" src="audio/eat-now.m4a" preload="auto"></audio>
+            <audio id="audio-eat-10min" src="audio/eat-10min.m4a" preload="auto"></audio>
+        </div>
     </div>
 </body>
 </html>
