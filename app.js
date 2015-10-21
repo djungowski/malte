@@ -26,9 +26,10 @@ websocketServer.on('request', function (request) {
 
 	connection.on('message', function (data) {
 		var message = JSON.parse(data.utf8Data);
-		attendees.push(message.name);
-		attendees = _.uniq(attendees);
-
+		if (message.time !== null) {
+			attendees.push(message.name);
+			attendees = _.uniq(attendees);
+		}
 		var broadcastData = {
 			name: message.name,
 			time: message.time,

@@ -23,6 +23,7 @@ VirtualMalte.HungerController = function ($scope, $http) {
 	var connected = function() {
 		socket.onclose = reconnect;
 		socket.onmessage = receiveAndPlayMessage;
+		getBasicInformation();
 
 		hideOverlay();
 	};
@@ -38,13 +39,19 @@ VirtualMalte.HungerController = function ($scope, $http) {
 
 	var receiveAndPlayMessage = function(message) {
 		var transferData = JSON.parse(message.data);
+
 		var audio = transferData.audio;
-		var soundElement = $('#audio-eat-' + audio)[0];
-		soundElement.pause();
-		soundElement.currentTime = 0;
-		soundElement.play();
+		var time = transferData.time;
+		if (audio !== null) {
+			var soundElement = $('#audio-eat-' + audio)[0];
+			soundElement.pause();
+			soundElement.currentTime = 0;
+			soundElement.play();
+		}
+		if (time !== null) {
+			$scope.time = new Date(time);
+		}
 		$scope.attendees = transferData.attendees;
-		$scope.time = new Date(transferData.time);
 		$scope.$apply();
 	};
 
@@ -57,6 +64,15 @@ VirtualMalte.HungerController = function ($scope, $http) {
 
 	connect();
 
+	var getBasicInformation = function() {
+		var transferData = {
+			audio: null,
+			time: null,
+			name: localStorage.name
+		};
+		sendSocketMessage(transferData);
+	};
+
 	$scope.sendFoodRequest = function(audio) {
 		var time = $scope.time;
 		var transferData = {
@@ -64,6 +80,10 @@ VirtualMalte.HungerController = function ($scope, $http) {
 			time: time,
 			name: localStorage.name
 		};
+		sendSocketMessage(transferData);
+	};
+
+	var sendSocketMessage = function (transferData) {
 		socket.send(JSON.stringify(transferData));
 	};
 };
