@@ -1,4 +1,6 @@
 VirtualMalte.HungerController = function ($scope, $http) {
+	$scope.attendees = [];
+
 	var socket;
 	var overlay = $('#overlay');
 	var isHungry = $('#is-hungry');
@@ -43,6 +45,8 @@ VirtualMalte.HungerController = function ($scope, $http) {
 		soundElement.currentTime = 0;
 		soundElement.play();
 		personIsHungry(transferData.name);
+		$scope.attendees = transferData.attendees;
+		$scope.$apply();
 	};
 
 	var connect = function () {

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="virtualMalte">
 <head>
-    <title>Malte for your desktop</title>
+    <title>Virtual Malte - The Lunch Companion</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
     <link rel="stylesheet" type="text/css" href="css/malte.css">
     <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
@@ -18,16 +18,18 @@
             onnecting
         </div>
     </div>
-    <div id="rollcall">
-        <p>Uhrzeit: hh:mm</p>
-        <p>Mitesser:</p>
-        <p id="attendee-list"></p>
+    <div id="name" ng-controller="NameController">
+        Dein Name: <input type="text" ng-model="name" value="" />
     </div>
-    <div>
-        <div id="name" ng-controller="NameController">
-            Dein Name: <input type="text" ng-model="name" value="" />
+    <div ng-controller="HungerController">
+        <div id="rollcall">
+            <p>Uhrzeit: hh:mm</p>
+            <p>Mitesser:</p>
+            <p id="attendee-list">
+                <span ng-repeat="name in attendees" class="attendee-name">{{ name }}</span>
+            </p>
         </div>
-        <div id="hunger-control" ng-controller="HungerController">
+        <div id="hunger-control">
             <div id="is-hungry">
                 <span id="is-hungry-name">Keiner</span> hat Hunger!
             </div>
