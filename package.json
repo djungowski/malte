@@ -12,11 +12,13 @@
     "moment-timezone": "^0.4.1",
     "websocket": "^1.0.22"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "jasmine": "^2.3.2"
+  },
   "scripts": {
     "prestart": "node_modules/gulp/bin/gulp.js dist",
     "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node_modules/jasmine/bin/jasmine.js"
   },
   "repository": {
     "type": "git",

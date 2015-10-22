@@ -36,7 +36,7 @@ var setNextLunchTime = function () {
 	});
 
 	// If it's already past 4pm, set lunch time for the next day
-	if (lunchTime.hour() > 16) {
+	if (moment().hour() > 16) {
 		lunchTime.add(1, 'day');
 	}
 };
