@@ -19,6 +19,10 @@
         </div>
     </div>
     <div ng-controller="HungerController" id="content">
+        <div id="logo">
+            <img class="logo-700" src="img/logo-700.png">
+            <img class="logo-300" src="img/logo-300.png">
+        </div>
         <div class="buttons">
             <div id="rollcall" class="button">
                 <div class="input-container" id="name" ng-controller="NameController">
@@ -31,9 +35,9 @@
                 </div>
                 <div id="attendee-container">
                     <p class="headline">Rollcall:</p>
-                    <p id="attendee-list">
-                        <span ng-repeat="name in attendees" class="attendee-name">{{ name }}</span>
-                    </p>
+                    <ul id="attendee-list">
+                        <li ng-repeat="name in attendees" class="attendee-name">{{ name }}</li>
+                    </ul>
                 </div>
             </div>
 

@@ -19,7 +19,15 @@ body {
 	overflow: hidden;
 	max-width: 47em;
 	margin: 1em auto 0 auto;
-	padding: 1em;
+	padding: 0 1em;
+}
+
+#logo {
+	text-align: center;
+}
+
+.logo-300 {
+	display: none;
 }
 
 #overlay {
@@ -156,6 +164,7 @@ span.button-disabled {
 	overflow-x: hidden;
 	height: 189px;
 	margin-top: 0;
+	padding-left: 1.5em;
 }
 
 #attendee-container .headline {
@@ -186,7 +195,16 @@ span.button-disabled {
 	padding: 0 0.5em;
 }
 
+
 @media only screen and (max-width: 736px) {
+	.logo-300 {
+		display: inline;
+	}
+
+	.logo-700 {
+		display: none;
+	}
+
 	#content {
 		margin: 0 auto;
 		padding: 0.1em;
