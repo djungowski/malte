@@ -36,7 +36,9 @@
                 <div id="attendee-container">
                     <p class="headline">Rollcall:</p>
                     <ul id="attendee-list">
-                        <li ng-repeat="name in attendees" class="attendee-name">{{ name }}</li>
+                        <li ng-repeat="name in attendees" class="attendee-name">
+                            <span>{{ name }}</span>
+                        </li>
                     </ul>
                 </div>
             </div>

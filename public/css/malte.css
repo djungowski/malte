@@ -156,7 +156,11 @@ span.button-disabled {
 }
 
 .attendee-name {
-	display: block;
+	list-style-image: url(../img/malte-cut-mirrored.png);
+}
+
+.attendee-name span {
+	margin-left: -10px;
 }
 
 #attendee-list {
