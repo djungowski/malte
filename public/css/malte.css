@@ -7,6 +7,7 @@ input {
 	-webkit-appearance: none;
 	border: none;
 	height: 25px;
+	border-radius: 0;
 }
 
 body {
@@ -168,18 +169,21 @@ span.button-disabled {
 }
 
 .input-container span, .input-container input {
-	width: calc(50% - 2px);
 	margin: 0 0 0.5em 0;
-	padding: 0;
 }
 
 .input-container span {
+	width: calc(50% - 2px);
 	display: block;
 	float: left;
+	padding: 0;
+
 }
 
 .input-container input {
 	float: right;
+	width: calc(50% - 2px - 1em);
+	padding: 0 0.5em;
 }
 
 @media only screen and (max-width: 736px) {
