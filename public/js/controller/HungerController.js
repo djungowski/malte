@@ -57,7 +57,8 @@ VirtualMalte.HungerController = function ($scope, $http) {
 		if (audio == 'plus1') {
 			sendDesktopNotification(name + ' will join lunch');
 		} else {
-			sendDesktopNotification(name + ' is hungry');
+			var ttl = moment($scope.time).format('HH:mm');
+			sendDesktopNotification(name + ' is hungry and proposes lunch at ' + ttl);
 		}
 	};
 
