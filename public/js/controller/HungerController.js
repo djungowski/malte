@@ -38,16 +38,27 @@ VirtualMalte.HungerController = function ($scope, $http) {
 		var audio = transferData.audio;
 		var time = transferData.time;
 		if (audio !== null) {
+
+			sendLunchNotifaction(audio, transferData.name);
 			var soundElement = $('#audio-eat-' + audio)[0];
 			soundElement.pause();
 			soundElement.currentTime = 0;
 			soundElement.play();
 		}
+
 		if (time !== null) {
 			$scope.time = new Date(time);
 		}
 		$scope.attendees = transferData.attendees;
 		$scope.$apply();
+	};
+
+	var sendLunchNotifaction = function (audio, name) {
+		if (audio == 'plus1') {
+			sendDesktopNotification(name + ' will join lunch');
+		} else {
+			sendDesktopNotification(name + ' is hungry');
+		}
 	};
 
 	var connect = function () {
@@ -68,8 +79,29 @@ VirtualMalte.HungerController = function ($scope, $http) {
 		sendSocketMessage(transferData);
 	};
 
+	var hasDesktopNotifactions = function () {
+		return ("Notification" in window && Notification.permission !== 'denied');
+	};
+
+	var requestNotificationPermission = function () {
+		if (hasDesktopNotifactions()) {
+			Notification.requestPermission();
+		}
+	};
+
+	var sendDesktopNotification = function(message) {
+		if (hasDesktopNotifactions()) {
+			var options = {
+				body: message,
+				lang: 'en',
+				icon: '../../img/logo-square.png'
+			};
+			new Notification('Virtual Malte', options);
+		}
+	};
+
 	$scope.sendFoodRequest = function($event) {
-		clickedElement = $($event.currentTarget);
+		var clickedElement = $($event.currentTarget);
 		// Do nothing if the element is disabled
 		if (clickedElement.hasClass('button-disabled')) {
 			return;
@@ -91,4 +123,6 @@ VirtualMalte.HungerController = function ($scope, $http) {
 	$scope.noAttendees = function () {
 		return $scope.attendees.length == 0;
 	};
+
+	requestNotificationPermission();
 };

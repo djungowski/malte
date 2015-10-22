@@ -1,3 +1,1 @@
-var VirtualMalte = function () {
-
-};
+var VirtualMalte = function () {};
