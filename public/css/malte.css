@@ -60,37 +60,28 @@ body {
 	color: #AA0000;
 }
 
-#rollcall {
+.button {
+	position: relative;
 	float: left;
-	margin-right: 1em;
 	padding: 0.5em;
 	background-color: rgba(224, 224, 224, 0.8);
-
-	position: relative;
 	max-width: calc(600px - 1em);
 	width: calc(364px - 1em);
+	height: calc(300px - 1em);
 	margin-top: 0;
 	margin-left: 0 !important;
-	height: calc(300px - 1em);
 	overflow: hidden;
 	border-radius: 10px;
 	box-shadow: #050933 2px 2px;
+	cursor: pointer;
+}
+
+#rollcall {
+	cursor: default;
 }
 
 .eat {
-	position: relative;
-	cursor: pointer;
-	max-width: 600px;
-	width: 364px;
-	float: left;
-	margin-top: 0;
-	margin-left: 0 !important;
-	margin-right: 0;
-	height: 300px;
-	overflow: hidden;
 	background-repeat: no-repeat;
-	border-radius: 10px;
-	box-shadow: #050933 2px 2px;
 }
 
 .eat:active {
@@ -180,16 +171,15 @@ body {
 		width: 100%;
 	}
 
-	#rollcall {
-		float: none;
+	.button {
 		width: calc(100% - 2px - 1em);
-	}
-
-	.eat {
-		width: 100%;
 		float: none;
 		margin-right: 0 !important;
 		margin-top: 1em;
+	}
+
+	#rollcall {
+		margin-top: 0;
 	}
 }
 
