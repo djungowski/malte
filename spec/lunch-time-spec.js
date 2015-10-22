@@ -25,5 +25,13 @@ describe('lunch-time specs', function() {
 			console.log(lunchTime.format('YYYY-MM-DD HH:mm'));
 			expect(lunchTime.tz()).toEqual('Europe/Berlin');
 		});
+
+		it('sets the next day if it is already past 4pm', function () {
+			var mockedDate = new Date(2015, 9, 18, 16, 27, 67);
+			jasmine.clock().mockDate(mockedDate);
+			this.lunchTime.setNextLunchTime();
+			var lunchTime = this.lunchTime.get();
+			expect(lunchTime.format('YYYY-MM-DD HH:mm')).toEqual('2015-10-19 11:45');
+		});
     });
 });
