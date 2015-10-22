@@ -52,6 +52,11 @@ VirtualMalte.HungerController = function ($scope, $window) {
 
 		var audio = transferData.audio;
 		var time = transferData.time;
+
+		if (time !== null) {
+			$scope.time = new Date(time);
+		}
+
 		if (audio !== null) {
 
 			sendLunchNotifaction(audio, transferData.name);
@@ -61,9 +66,6 @@ VirtualMalte.HungerController = function ($scope, $window) {
 			soundElement.play();
 		}
 
-		if (time !== null) {
-			$scope.time = new Date(time);
-		}
 		$scope.attendees = transferData.attendees;
 		$scope.$apply();
 	};
