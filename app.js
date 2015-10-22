@@ -6,7 +6,7 @@ var moment = require('moment-timezone');
 
 var port = process.env.PORT || 8080;
 var attendees = [];
-var lunchTimeNew = require('./lib/lunch-time');
+var lunchTime = require('./lib/lunch-time');
 
 var appConfig = require('./package.json');
 
@@ -21,13 +21,13 @@ var websocketServer = new websocket({
 });
 
 var resetEverything = function () {
-	lunchTimeNew.setNextLunchTime();
+	lunchTime.setNextLunchTime();
 	attendees = [];
 };
 
 var checkAndResetTimeIfNecessary = function () {
-	lunchTimeNew.setNextLunchTimeIfNull();
-	if (lunchTimeNew.isResetNecessary()) {
+	lunchTime.setNextLunchTimeIfNull();
+	if (lunchTime.isResetNecessary()) {
 		resetEverything();
 	}
 };
@@ -57,7 +57,7 @@ websocketServer.on('request', function (request) {
 				if (message.time === null) {
 					checkAndResetTimeIfNecessary();
 				} else {
-					lunchTimeNew.set(message.time);
+					lunchTime.set(message.time);
 				}
 
 				if (message.audio !== null) {
@@ -67,7 +67,7 @@ websocketServer.on('request', function (request) {
 				var broadcastData = {
 					type: message.type,
 					name: message.name,
-					time: lunchTimeNew.get(),
+					time: lunchTime.get(),
 					audio: message.audio,
 					attendees: attendees
 				};
