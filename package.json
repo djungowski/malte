@@ -6,6 +6,7 @@
   "dependencies": {
     "angular": "^1.4.7",
     "express": "^4.13.3",
+    "gulp": "^3.9.0",
     "lodash": "^3.10.1",
     "moment": "^2.10.6",
     "websocket": "^1.0.22"
