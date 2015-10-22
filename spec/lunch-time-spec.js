@@ -93,4 +93,12 @@ describe('lunch-time specs', function() {
 			expect(lunchTime.format('YYYY-MM-DD HH:mm')).toEqual('2015-10-22 14:22');
 	    });
 	});
+
+	describe('#reset', function() {
+	    it('resets the date', function() {
+			this.lunchTime.set(new Date("Thu Oct 22 2015 14:22:23 GMT+0200 (CEST)"));
+			this.lunchTime.reset();
+			expect(this.lunchTime.get()).toBeNull();
+	    });
+	});
 });
