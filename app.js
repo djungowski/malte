@@ -2,7 +2,7 @@ var websocket = require('websocket').server;
 var http = require('http');
 var express = require('express');
 var _ = require('lodash');
-var moment = require('moment');
+var moment = require('moment-timezone');
 
 var port = process.env.PORT || 8080;
 var attendees = [];
@@ -25,6 +25,7 @@ var resetEverything = function () {
 
 var setNextLunchTime = function () {
 	lunchTime = moment();
+	lunchTime.tz('Europe/Berlin');
 	lunchTime.set({
 		hour: 11,
 		minute: 45,
