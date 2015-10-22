@@ -22,15 +22,15 @@
         <div class="buttons">
             <div id="rollcall" class="button">
                 <div class="input-container" id="name" ng-controller="NameController">
-                    <span>Dein Name:</span>
+                    <span>Your name:</span>
                     <input type="text" ng-model="name" value="">
                 </div>
                 <div class="input-container" id="time">
-                    <span>Uhrzeit:</span>
+                    <span>TTL (time to leave):</span>
                     <input type="time" ng-model="time" value="">
                 </div>
                 <div id="attendee-container">
-                    <p class="headline">Mitesser:</p>
+                    <p class="headline">Rollcall:</p>
                     <p id="attendee-list">
                         <span ng-repeat="name in attendees" class="attendee-name">{{ name }}</span>
                     </p>
@@ -43,11 +43,11 @@
             </p>
 
             <p id="eat-now" class="eat button" data-audio="now" ng-click="sendFoodRequest($event)">
-                <span class="button-text">Jetzt essen?</span>
+                <span class="button-text">Eat now?</span>
             </p>
 
             <p id="eat-10min" class="eat button" data-audio="10min" ng-click="sendFoodRequest($event)">
-                <span class="button-text">In 10 Minuten essen?</span>
+                <span class="button-text">Eat in 10 minutes?</span>
             </p>
 
         </div>
