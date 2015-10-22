@@ -125,5 +125,9 @@ VirtualMalte.HungerController = function ($scope, $http) {
 		return $scope.attendees.length == 0;
 	};
 
+	$scope.hasAttendees = function () {
+		return $scope.attendees.length > 0;
+	};
+
 	requestNotificationPermission();
 };

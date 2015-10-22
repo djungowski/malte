@@ -51,11 +51,13 @@
                 <span class="button-text">+1</span>
             </p>
 
-            <p id="eat-now" class="eat button" data-audio="now" ng-click="sendFoodRequest($event)">
+            <p id="eat-now" class="eat button" ng-class="{'button-disabled': hasAttendees()}" data-audio="now" ng-click="sendFoodRequest($event)">
+                <span class="button-disabled"></span>
                 <span class="button-text">Eat now?</span>
             </p>
 
-            <p id="eat-10min" class="eat button" data-audio="10min" ng-click="sendFoodRequest($event)">
+            <p id="eat-10min" class="eat button" ng-class="{'button-disabled': hasAttendees()}" data-audio="10min" ng-click="sendFoodRequest($event)">
+                <span class="button-disabled"></span>
                 <span class="button-text">Eat in 10 minutes?</span>
             </p>
 
