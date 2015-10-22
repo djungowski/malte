@@ -54,10 +54,10 @@ VirtualMalte.HungerController = function ($scope, $http) {
 	};
 
 	var sendLunchNotifaction = function (audio, name) {
+		var ttl = moment($scope.time).format('HH:mm');
 		if (audio == 'plus1') {
-			sendDesktopNotification(name + ' will join lunch');
+			sendDesktopNotification(name + ' will join lunch at ' + ttl);
 		} else {
-			var ttl = moment($scope.time).format('HH:mm');
 			sendDesktopNotification(name + ' is hungry and proposes lunch at ' + ttl);
 		}
 	};
