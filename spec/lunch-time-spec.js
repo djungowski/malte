@@ -63,4 +63,34 @@ describe('lunch-time specs', function() {
 			expect(lunchTime.format('YYYY-MM-DD HH:mm')).toEqual('2015-10-22 11:45');
 		});
 	});
+
+	describe('#isResetNecessary', function() {
+	    it('is not if lunch is not more than 2 hours away', function() {
+			var mockedDate = new Date(2015, 9, 18, 9, 27, 67);
+			jasmine.clock().mockDate(mockedDate);
+			this.lunchTime.setNextLunchTime();
+
+			mockedDate = new Date(2015, 9, 18, 13, 27, 67);
+			jasmine.clock().mockDate(mockedDate);
+			expect(this.lunchTime.isResetNecessary()).toBe(false);
+	    });
+
+		it('is if lunch is more than 2 hours away', function() {
+			var mockedDate = new Date(2015, 9, 18, 9, 27, 67);
+			jasmine.clock().mockDate(mockedDate);
+			this.lunchTime.setNextLunchTime();
+
+			mockedDate = new Date(2015, 9, 18, 13, 46, 67);
+			jasmine.clock().mockDate(mockedDate);
+			expect(this.lunchTime.isResetNecessary()).toBe(true);
+		});
+	});
+
+	describe('#set', function() {
+	    it('it sets a given time as moment object', function() {
+	        this.lunchTime.set(new Date("Thu Oct 22 2015 14:22:23 GMT+0200 (CEST)"));
+			var lunchTime = this.lunchTime.get();
+			expect(lunchTime.format('YYYY-MM-DD HH:mm')).toEqual('2015-10-22 14:22');
+	    });
+	});
 });
