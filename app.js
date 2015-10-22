@@ -6,7 +6,7 @@ var moment = require('moment-timezone');
 
 var port = process.env.PORT || 8080;
 var attendees = [];
-var lunchTime = null;
+var lunchTime = require('./lib/lunch-time');
 
 var appConfig = require('./package.json');
 
@@ -21,36 +21,13 @@ var websocketServer = new websocket({
 });
 
 var resetEverything = function () {
-	setNextLunchTime();
+	lunchTime.setNextLunchTime();
 	attendees = [];
 };
 
-var setNextLunchTime = function () {
-	lunchTime = moment();
-	lunchTime.tz('Europe/Berlin');
-	lunchTime.set({
-		hour: 11,
-		minute: 45,
-		second: 0,
-		millisecond: 0
-	});
-
-	// If it's already past 4pm, set lunch time for the next day
-	if (lunchTime.hour() > 16) {
-		lunchTime.add(1, 'day');
-	}
-};
-
 var checkAndResetTimeIfNecessary = function () {
-	if (lunchTime == null) {
-		setNextLunchTime();
-		return;
-	}
-
-	var now = moment();
-	var lastLunch = now.diff(lunchTime, 'hours');
-	// Reset everything if last lunch time is already more than 2 hours ago
-	if (lastLunch >= 2) {
+	lunchTime.setNextLunchTimeIfNull();
+	if (lunchTime.isResetNecessary()) {
 		resetEverything();
 	}
 };
@@ -80,7 +57,7 @@ websocketServer.on('request', function (request) {
 				if (message.time === null) {
 					checkAndResetTimeIfNecessary();
 				} else {
-					lunchTime = moment(message.time);
+					lunchTime.set(message.time);
 				}
 
 				if (message.audio !== null) {
@@ -90,7 +67,7 @@ websocketServer.on('request', function (request) {
 				var broadcastData = {
 					type: message.type,
 					name: message.name,
-					time: lunchTime,
+					time: lunchTime.get(),
 					audio: message.audio,
 					attendees: attendees
 				};
