@@ -19,11 +19,11 @@ var websocketServer = new websocket({
 });
 
 var resetEverything = function () {
-	setLunchTimeForToday();
+	setNextLunchTime();
 	attendees = [];
 };
 
-var setLunchTimeForToday = function () {
+var setNextLunchTime = function () {
 	lunchTime = moment();
 	lunchTime.set({
 		hour: 11,
@@ -31,11 +31,16 @@ var setLunchTimeForToday = function () {
 		second: 0,
 		millisecond: 0
 	});
+
+	// If it's already past 4pm, set lunch time for the next day
+	if (lunchTime.hour() > 16) {
+		lunchTime.add(1, 'day');
+	}
 };
 
 var checkAndResetTimeIfNecessary = function () {
 	if (lunchTime == null) {
-		setLunchTimeForToday();
+		setNextLunchTime();
 		return;
 	}
 
