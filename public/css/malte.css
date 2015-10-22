@@ -18,6 +18,7 @@ body {
 	overflow: hidden;
 	max-width: 47em;
 	margin: 1em auto 0 auto;
+	padding: 1em;
 }
 
 #overlay {
@@ -72,8 +73,19 @@ body {
 	margin-left: 0 !important;
 	overflow: hidden;
 	border-radius: 10px;
-	box-shadow: #050933 2px 2px;
+	box-shadow: #050933 2px 2px 2px;
 	cursor: pointer;
+}
+
+span.button-disabled {
+	background: rgba(154,136,136,0.5);
+	display: block;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	z-index: 2;
 }
 
 #rollcall {
@@ -85,7 +97,7 @@ body {
 }
 
 .eat:active {
-	box-shadow: #050933 -2px -2px;
+	box-shadow: -2px -2px 2px #050933;
 }
 
 #eat-now {
@@ -107,7 +119,7 @@ body {
 	margin-right: 1em;
 }
 
-.eat span {
+.eat .button-text {
 	display: block;
 	position: absolute;
 	width: 100%;
@@ -164,6 +176,7 @@ body {
 @media only screen and (max-width: 736px) {
 	#content {
 		margin: 0 auto;
+		padding: 0.1em;
 	}
 
 	#hunger-control {
