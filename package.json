@@ -1,29 +1,30 @@
 {
-  "name": "malte",
-  "version": "1.0.0",
-  "description": "Malte for your desktop",
-  "main": "app.js",
-  "dependencies": {
-    "angular": "^1.4.7",
-    "express": "^4.13.3",
-    "gulp": "^3.9.0",
-    "lodash": "^3.10.1",
-    "moment": "^2.10.6",
-    "websocket": "^1.0.22"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/djungowski/malte.git"
-  },
-  "author": "Dominik Jungowski",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/djungowski/malte/issues"
-  },
-  "homepage": "https://github.com/djungowski/malte#readme"
+	"name": "malte",
+	"version": "1.0.0",
+	"description": "Malte for your desktop",
+	"main": "app.js",
+	"dependencies": {
+		"angular": "^1.4.7",
+		"express": "^4.13.3",
+		"gulp": "^3.9.0",
+		"lodash": "^3.10.1",
+		"moment": "^2.10.6",
+		"websocket": "^1.0.22"
+	},
+	"devDependencies": {},
+	"scripts": {
+		"prestart": "node_modules/gulp/bin/gulp.js dist",
+		"start": "node app.js",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/djungowski/malte.git"
+	},
+	"author": "Dominik Jungowski",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/djungowski/malte/issues"
+	},
+	"homepage": "https://github.com/djungowski/malte#readme"
 }
