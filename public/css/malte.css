@@ -81,6 +81,10 @@ body {
 	cursor: default;
 }
 
+.button:not(.button-disabled) span.button-disabled {
+	display: none;
+}
+
 span.button-disabled {
 	background: rgba(154,136,136,0.5);
 	display: block;
