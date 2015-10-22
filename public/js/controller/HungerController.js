@@ -1,11 +1,11 @@
-VirtualMalte.HungerController = function ($scope, $http) {
+VirtualMalte.HungerController = function ($scope, $window) {
 	$scope.attendees = [];
-
 	$scope.time = null;
 
 	var socket;
 	var overlay = $('#overlay');
 	var host = location.origin.replace(/^http/, 'ws');
+	var appVersion = null;
 
 	var hideOverlay = function() {
 		overlay.hide();
@@ -18,6 +18,7 @@ VirtualMalte.HungerController = function ($scope, $http) {
 	var connected = function() {
 		socket.onclose = reconnect;
 		socket.onmessage = receiveAndPlayMessage;
+		checkVersion();
 		getBasicInformation();
 
 		hideOverlay();
@@ -34,6 +35,20 @@ VirtualMalte.HungerController = function ($scope, $http) {
 
 	var receiveAndPlayMessage = function(message) {
 		var transferData = JSON.parse(message.data);
+
+		if (transferData.type == 'version') {
+			var serverVersion = transferData.version;
+			if (appVersion == null) {
+				appVersion = serverVersion;
+				return;
+			}
+
+			if (appVersion !== serverVersion) {
+				$window.location.reload();
+			}
+
+			return;
+		}
 
 		var audio = transferData.audio;
 		var time = transferData.time;
@@ -71,8 +86,16 @@ VirtualMalte.HungerController = function ($scope, $http) {
 
 	connect();
 
+	var checkVersion = function () {
+		var transferData = {
+			type: 'version'
+		};
+		sendSocketMessage(transferData);
+	};
+
 	var getBasicInformation = function() {
 		var transferData = {
+			type: 'hunger',
 			audio: null,
 			time: null,
 			name: localStorage.name
@@ -110,6 +133,7 @@ VirtualMalte.HungerController = function ($scope, $http) {
 		var audio = clickedElement.attr('data-audio');
 		var time = $scope.time;
 		var transferData = {
+			type: 'hunger',
 			audio: audio,
 			time: time,
 			name: localStorage.name

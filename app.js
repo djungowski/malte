@@ -8,6 +8,8 @@ var port = process.env.PORT || 8080;
 var attendees = [];
 var lunchTime = null;
 
+var appConfig = require('./package.json');
+
 app = express();
 app.use('/', express.static(__dirname + '/public'));
 
@@ -64,23 +66,38 @@ websocketServer.on('request', function (request) {
 	connection.on('message', function (data) {
 		var message = JSON.parse(data.utf8Data);
 
-		if (message.time === null) {
-			checkAndResetTimeIfNecessary();
-		} else {
-			lunchTime = moment(message.time);
+		switch (message.type) {
+			case 'version':
+				var versionData = {
+					type: message.type,
+					version: appConfig.version
+				};
+				connection.sendUTF(JSON.stringify(versionData));
+				break;
+
+			case 'hunger':
+			default:
+				if (message.time === null) {
+					checkAndResetTimeIfNecessary();
+				} else {
+					lunchTime = moment(message.time);
+				}
+
+				if (message.audio !== null) {
+					attendees.push(message.name);
+					attendees = _.uniq(attendees);
+				}
+				var broadcastData = {
+					type: message.type,
+					name: message.name,
+					time: lunchTime,
+					audio: message.audio,
+					attendees: attendees
+				};
+				websocketServer.broadcastUTF(JSON.stringify(broadcastData));
+				break;
 		}
 
-		if (message.audio !== null) {
-			attendees.push(message.name);
-			attendees = _.uniq(attendees);
-		}
-		var broadcastData = {
-			name: message.name,
-			time: lunchTime,
-			audio: message.audio,
-			attendees: attendees
-		};
-		websocketServer.broadcastUTF(JSON.stringify(broadcastData));
 	});
 });
 
