@@ -77,6 +77,10 @@ body {
 	cursor: pointer;
 }
 
+.button.button-disabled {
+	cursor: default;
+}
+
 span.button-disabled {
 	background: rgba(154,136,136,0.5);
 	display: block;
@@ -96,9 +100,10 @@ span.button-disabled {
 	background-repeat: no-repeat;
 }
 
-.eat:active {
+.eat:active:not(.button-disabled) {
 	box-shadow: -2px -2px 2px #050933;
 }
+
 
 #eat-now {
 	background-image: url(../img/eat-now.JPG);

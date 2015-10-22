@@ -73,7 +73,13 @@ VirtualMalte.HungerController = function ($scope, $http) {
 		sendSocketMessage(transferData);
 	};
 
-	$scope.sendFoodRequest = function(audio) {
+	$scope.sendFoodRequest = function($event) {
+		clickedElement = $($event.currentTarget);
+		// Do nothing if the element is disabled
+		if (clickedElement.hasClass('button-disabled')) {
+			return;
+		}
+		var audio = clickedElement.attr('data-audio');
 		var time = $scope.time;
 		var transferData = {
 			audio: audio,
@@ -85,5 +91,9 @@ VirtualMalte.HungerController = function ($scope, $http) {
 
 	var sendSocketMessage = function (transferData) {
 		socket.send(JSON.stringify(transferData));
+	};
+
+	$scope.noAttendees = function () {
+		return $scope.attendees.length == 0;
 	};
 };

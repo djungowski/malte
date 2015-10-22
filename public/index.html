@@ -37,16 +37,16 @@
                 </div>
             </div>
 
-            <p id="eat-plus1" class="eat button" ng-disabled="noAttendees()" ng-click="sendFoodRequest('plus1')">
+            <p id="eat-plus1" class="eat button" ng-class="{'button-disabled': noAttendees()}" data-audio="plus1" ng-click="sendFoodRequest($event)">
                 <span class="button-disabled"></span>
                 <span class="button-text">+1</span>
             </p>
 
-            <p id="eat-now" class="eat button" ng-click="sendFoodRequest('now')">
+            <p id="eat-now" class="eat button" data-audio="now" ng-click="sendFoodRequest($event)">
                 <span class="button-text">Jetzt essen?</span>
             </p>
 
-            <p id="eat-10min" class="eat button" ng-click="sendFoodRequest('10min')">
+            <p id="eat-10min" class="eat button" data-audio="10min" ng-click="sendFoodRequest($event)">
                 <span class="button-text">In 10 Minuten essen?</span>
             </p>
 
